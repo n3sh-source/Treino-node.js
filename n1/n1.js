@@ -18,6 +18,6 @@ setInterval(() => {
     console.log('------------- PC Stats ------------')
     console.table(stats);
 
-    log('RODANDO..........');
+    log(`${JSON.stringify(stats)}\n`);
 }, 1000);
 
