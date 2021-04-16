@@ -1,5 +1,7 @@
 const os = require('os');
 
+const log = require('./logger');
+
 setInterval(() => {
     const {freemem, totalmem} = os;
     const total = parseInt(totalmem() /1024 /1024);
@@ -15,5 +17,7 @@ setInterval(() => {
     console.clear();
     console.log('------------- PC Stats ------------')
     console.table(stats);
+
+    log('RODANDO..........');
 }, 1000);
 
