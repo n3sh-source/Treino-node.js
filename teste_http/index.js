@@ -1,18 +1,19 @@
 const express = require('express');
 const app = express();
+const handlebars = require('express-handlebars');
+const Sequelize = require('sequelize');
 
-app.get("/", function(req,res){
-    res.sendFile(__dirname + "/html/index.html");
-});
+//Config
+    //Template Engine
+        app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+        app.set('view engine', 'handlebars');
 
-app.get("/sobre", function(req, res){
-    res.sendFile(__dirname + "/html/sobre.html");
-});
-
-app.get("/ola/:cargo/:nome", function(req, res){
-    res.send("<h1>Bem vindo "+ req.params.nome+ "</h1>" + "<h2> Seu cargo: "+ req.params.cargo +"</h2>");
-});
-
+    //Conexão BD SQL
+        const sequelize = new Sequelize('teste', 'root', 'root', {
+            host: 'localhost',
+            dialect: 'mysql'
+        });
+        
 app.listen(8081, function(){
     console.log('Server ON');
 });
